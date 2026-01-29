@@ -92,7 +92,7 @@ function App() {
 
       <footer className="border-t border-soft-black-lighter px-6 py-4 mt-8">
         <div className="max-w-6xl mx-auto text-center text-gray-500 text-sm">
-          <div>claudetrace - Claude Code Session Log Viewer</div>
+          <div><span className="text-brand-400">claude</span>trace - Claude Code Session Log Viewer</div>
           <div className="mt-1">
             Developed by{' '}
             <a
