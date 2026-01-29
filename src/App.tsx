@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import type { ParsedSession } from './types';
-import { parseJsonl, analyzeSession } from './parser';
+import { parseJsonl, analyzeSession, ParseError } from './parser';
 import {
   FileUpload,
   SessionInfo,
@@ -8,15 +8,18 @@ import {
   ToolUsage,
   ConversationFlow,
   Footer,
+  ErrorPage,
 } from './components';
 
 function App() {
   const [session, setSession] = useState<ParsedSession | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [errorDetails, setErrorDetails] = useState<string | undefined>(undefined);
 
   const handleFileLoad = (content: string) => {
     try {
       setError(null);
+      setErrorDetails(undefined);
       const entries = parseJsonl(content);
       if (entries.length === 0) {
         setError('No valid entries found in the file.');
@@ -25,13 +28,19 @@ function App() {
       const parsed = analyzeSession(entries);
       setSession(parsed);
     } catch (err) {
-      setError(`Failed to parse file: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      if (err instanceof ParseError) {
+        setError(err.message);
+        setErrorDetails(err.details);
+      } else {
+        setError(`Failed to parse file: ${err instanceof Error ? err.message : 'Unknown error'}`);
+      }
     }
   };
 
   const handleReset = () => {
     setSession(null);
     setError(null);
+    setErrorDetails(undefined);
   };
 
   return (
@@ -53,13 +62,9 @@ function App() {
       </header>
 
       <main className="max-w-6xl mx-auto px-6 py-8">
-        {error && (
-          <div className="mb-6 p-4 bg-red-900/50 border border-red-700 rounded-lg text-red-200">
-            {error}
-          </div>
-        )}
-
-        {!session ? (
+        {error ? (
+          <ErrorPage message={error} details={errorDetails} onRetry={handleReset} />
+        ) : !session ? (
           <div className="max-w-xl mx-auto">
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold mb-2">Claude Code Session Viewer</h2>

@@ -10,17 +10,43 @@ import type {
   ToolResultDetail,
 } from './types';
 
+export class ParseError extends Error {
+  details: string;
+
+  constructor(message: string, details: string) {
+    super(message);
+    this.name = 'ParseError';
+    this.details = details;
+  }
+}
+
 export function parseJsonl(content: string): LogEntry[] {
   const lines = content.split('\n').filter((line) => line.trim());
   const entries: LogEntry[] = [];
+  const errors: { line: number; error: string; preview: string }[] = [];
 
-  for (const line of lines) {
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
     try {
       const entry = JSON.parse(line) as LogEntry;
       entries.push(entry);
-    } catch {
-      // Skip malformed lines
+    } catch (e) {
+      const errorMessage = e instanceof Error ? e.message : 'Unknown error';
+      const preview = line.length > 100 ? line.substring(0, 100) + '...' : line;
+      errors.push({ line: i + 1, error: errorMessage, preview });
     }
+  }
+
+  if (entries.length === 0 && errors.length > 0) {
+    const details = errors
+      .slice(0, 5)
+      .map((e) => `Line ${e.line}: ${e.error}\n  ${e.preview}`)
+      .join('\n\n');
+    const suffix = errors.length > 5 ? `\n\n... and ${errors.length - 5} more errors` : '';
+    throw new ParseError(
+      'Failed to parse the JSONL file. No valid entries could be extracted.',
+      details + suffix
+    );
   }
 
   return entries;

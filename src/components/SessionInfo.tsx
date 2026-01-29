@@ -60,7 +60,7 @@ export function SessionInfo({ system, durationMs }: SessionInfoProps) {
       <div className="space-y-2">
         <div className="text-gray-400 text-sm">Available Tools:</div>
         <div className="flex flex-wrap gap-2">
-          {system.tools.map((tool) => (
+          {system.tools?.map((tool) => (
             <span
               key={tool}
               className="px-2 py-1 bg-soft-black-lighter text-gray-300 rounded text-xs"
@@ -71,7 +71,7 @@ export function SessionInfo({ system, durationMs }: SessionInfoProps) {
         </div>
       </div>
 
-      {system.mcp_servers.length > 0 && (
+      {system.mcp_servers?.length > 0 && (
         <div className="space-y-2">
           <div className="text-gray-400 text-sm">MCP Servers:</div>
           <div className="flex flex-wrap gap-2">
