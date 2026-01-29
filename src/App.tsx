@@ -65,6 +65,9 @@ function App() {
               <p className="text-gray-400">
                 Upload your Claude Code session log to view formatted session data
               </p>
+              <p className="text-gray-500 text-sm mt-2">
+                Fully local and private - no data is stored or sent anywhere.
+              </p>
             </div>
             <FileUpload onFileLoad={handleFileLoad} />
           </div>
