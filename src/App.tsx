@@ -7,6 +7,7 @@ import {
   TokenUsage,
   ToolUsage,
   ConversationFlow,
+  Footer,
 } from './components';
 
 function App() {
@@ -90,22 +91,7 @@ function App() {
         )}
       </main>
 
-      <footer className="border-t border-soft-black-lighter px-6 py-4 mt-8">
-        <div className="max-w-6xl mx-auto text-center text-gray-500 text-sm">
-          <div><span className="text-brand-400">claude</span>trace - Claude Code Session Log Viewer</div>
-          <div className="mt-1">
-            Developed by{' '}
-            <a
-              href="https://lejdiprifti.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-brand-400 hover:text-brand-300 transition-colors"
-            >
-              Lejdi Prifti
-            </a>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
