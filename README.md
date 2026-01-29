@@ -1,6 +1,7 @@
-# claudetrace
+# claudetrace 
+### 29.01.2026
 
-A web-based viewer for Claude Code session logs. Upload your `.json` or `.jsonl` session files to visualize conversations, tool usage, and token statistics.
+A web-based viewer for Claude Code session logs. Upload your `.json` or `.jsonl` session files to visualize conversations, tool usage, and token statistics. 
 
 ## Features
 
