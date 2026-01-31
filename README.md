@@ -1,8 +1,7 @@
 # claudelogs
+A privacy-focused web viewer for Claude Code session logs. Analyze your AI coding sessions with detailed insights into conversations, tool usage, and token consumption - all processed locally in your browser.
 
 ![claudelogs interface](images/claudelogs.png)
-
-A privacy-focused web viewer for Claude Code session logs. Analyze your AI coding sessions with detailed insights into conversations, tool usage, and token consumption - all processed locally in your browser.
 
 ## Why claudelogs?
 
