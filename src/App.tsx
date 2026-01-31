@@ -48,7 +48,7 @@ function App() {
       <header className="bg-soft-black-light border-b border-soft-black-lighter px-6 py-4">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <h1 className="text-2xl font-bold">
-            <span className="text-brand-400">claude</span>trace
+            <span className="text-brand-400">claude</span>logs
           </h1>
           {session && (
             <button
