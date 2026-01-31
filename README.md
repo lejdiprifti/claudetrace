@@ -1,10 +1,10 @@
-# claudetrace
+# claudelogs
 
-![claudetrace interface](images/claudetrace.png)
+![claudelogs interface](images/claudelogs.png)
 
 A privacy-focused web viewer for Claude Code session logs. Analyze your AI coding sessions with detailed insights into conversations, tool usage, and token consumption - all processed locally in your browser.
 
-## Why claudetrace?
+## Why claudelogs?
 
 When working with Claude Code, understanding how your sessions unfold can help you:
 - **Optimize token usage** - See exactly where tokens are being spent
@@ -31,8 +31,8 @@ All processing happens **entirely in your browser** - no data is ever sent to an
 ### Installation
 
 ```bash
-git clone https://github.com/lejdiprifti/claudetrace.git
-cd claudetrace
+git clone https://github.com/lejdiprifti/claudelogs.git
+cd claudelogs
 npm install
 ```
 
@@ -67,7 +67,7 @@ npm run preview
    ```
 
 2. **Upload the file**
-   Open claudetrace in your browser and either:
+   Open claudelogs in your browser and either:
    - Drag and drop the `.jsonl` file onto the upload area
    - Click "Browse Files" to select the file
 

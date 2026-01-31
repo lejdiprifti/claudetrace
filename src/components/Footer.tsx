@@ -45,7 +45,7 @@ export function Footer() {
             <FaLinkedin className="w-5 h-5" />
           </a>
           <a
-            href="https://github.com/lejdiprifti/claudetrace"
+            href="https://github.com/lejdiprifti/claudelogs"
             target="_blank"
             rel="noopener noreferrer"
             className="text-gray-500 hover:text-brand-400 transition-colors"
